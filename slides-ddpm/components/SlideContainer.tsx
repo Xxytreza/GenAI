@@ -118,30 +118,3 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
     </div>
   );
 }
-
-        <div className="flex gap-2">
-          {Array.from({ length: TOTAL_SLIDES }, (_, i) => (
-            <motion.div
-              key={i}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i + 1 === slideNumber
-                  ? "bg-neon-primary shadow-neon-cyan scale-125"
-                  : i + 1 < slideNumber
-                  ? "bg-neon-primary/50"
-                  : "bg-neon-muted/30"
-              }`}
-              whileHover={{ scale: 1.5 }}
-            />
-          ))}
-        </div>
-        <span className="text-neon-muted text-sm font-mono">
-          {slideNumber} / {TOTAL_SLIDES}
-        </span>
-      </div>
-
-      <div className="absolute bottom-6 right-6 text-neon-muted/50 text-xs">
-        ← → pour naviguer
-      </div>
-    </div>
-  );
-}
