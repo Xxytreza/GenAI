@@ -14,7 +14,7 @@ export default function Slide08VizForward() {
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        className="relative z-10 text-4xl font-display font-bold text-neon-primary mb-2"
+        className="relative z-10 text-7xl font-display font-bold text-neon-primary mb-4"
       >
         Visualisation Forward
       </motion.h2>
@@ -23,14 +23,14 @@ export default function Slide08VizForward() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="relative z-10 text-neon-muted mb-6"
+        className="relative z-10 text-2xl text-neon-muted mb-8"
       >
         Processus de bruitage progressif sur 6 échantillons MNIST
       </motion.p>
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center">
-        <NeonCard delay={0.3} glow="cyan" className="p-8">
-          <div className="grid gap-4" style={{ gridTemplateColumns: `80px repeat(6, 1fr)` }}>
+      <div className="relative z-10 flex-1 flex flex-col justify-center min-h-0">
+        <NeonCard delay={0.3} glow="cyan" className="p-6 flex-1 min-h-0 flex flex-col">
+          <div className="grid gap-2 flex-1 min-h-0 overflow-hidden" style={{ gridTemplateColumns: `80px repeat(6, 1fr)` }}>
             <div></div>
             {[1, 2, 3, 4, 5, 6].map((sample) => (
               <motion.div
@@ -40,18 +40,17 @@ export default function Slide08VizForward() {
                 transition={{ delay: 0.4 + sample * 0.05 }}
                 className="text-center text-neon-muted text-xs"
               >
-                Sample {sample}
+                S{sample}
               </motion.div>
             ))}
 
             {timesteps.map((t, rowIdx) => (
-              <>
+              <React.Fragment key={t}>
                 <motion.div
-                  key={`label-${t}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + rowIdx * 0.1 }}
-                  className="flex items-center justify-end pr-4 text-neon-primary font-mono text-sm"
+                  className="flex items-center justify-end pr-4 text-neon-primary font-mono text-xs"
                 >
                   t={t}
                 </motion.div>
@@ -61,7 +60,7 @@ export default function Slide08VizForward() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5 + rowIdx * 0.1 + sample * 0.03 }}
-                    className="aspect-square bg-neon-bg border border-neon-primary/30 rounded-lg overflow-hidden relative"
+                    className="aspect-square bg-neon-bg border border-neon-primary/30 rounded overflow-hidden relative max-h-[100px] w-full mx-auto"
                     style={{
                       background: `linear-gradient(135deg, 
                         rgba(0,240,255,${0.1 + (t / 1000) * 0.2}) 0%, 
@@ -69,7 +68,7 @@ export default function Slide08VizForward() {
                     }}
                   >
                     <div
-                      className="absolute inset-0 flex items-center justify-center text-neon-text/50 text-xs font-mono"
+                      className="absolute inset-0 flex items-center justify-center text-neon-text/50 text-[10px] font-mono"
                       style={{ opacity: 1 - t / 1200 }}
                     >
                       {t === 0 ? ["7", "2", "1", "0", "4", "9"][sample - 1] : ""}
@@ -85,7 +84,7 @@ export default function Slide08VizForward() {
                     />
                   </motion.div>
                 ))}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </NeonCard>

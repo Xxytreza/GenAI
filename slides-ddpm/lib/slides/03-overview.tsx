@@ -11,7 +11,7 @@ export default function Slide03Overview() {
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        className="relative z-10 text-4xl font-display font-bold text-neon-primary mb-8"
+        className="relative z-10 text-7xl font-display font-bold text-neon-primary mb-12"
       >
         Vue d&apos;ensemble DDPM
       </motion.h2>

@@ -21,6 +21,7 @@ body {
   color: var(--neon-text);
   font-family: 'JetBrains Mono', monospace;
   overflow: hidden;
+  font-size: 1.25rem;
 }
 
 ::selection {

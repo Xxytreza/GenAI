@@ -29,7 +29,7 @@ export default function Slide07Training() {
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        className="relative z-10 text-4xl font-display font-bold text-neon-accent mb-2"
+        className="relative z-10 text-7xl font-display font-bold text-neon-accent mb-4"
       >
         Entraînement
       </motion.h2>
@@ -38,7 +38,7 @@ export default function Slide07Training() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="relative z-10 text-neon-muted mb-6"
+        className="relative z-10 text-2xl text-neon-muted mb-10"
       >
         Fonction de perte simple L_simple
       </motion.p>

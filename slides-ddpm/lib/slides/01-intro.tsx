@@ -28,7 +28,7 @@ export default function Slide01Intro() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="text-2xl text-neon-text font-mono mb-2"
+          className="text-4xl text-neon-text font-mono mb-4"
         >
           Denoising Diffusion Probabilistic Models
         </motion.h2>
@@ -37,7 +37,7 @@ export default function Slide01Intro() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.6 }}
-          className="text-lg text-neon-muted mb-12"
+          className="text-2xl text-neon-muted mb-16"
         >
           Génération d&apos;images MNIST par diffusion
         </motion.p>

@@ -13,7 +13,7 @@ export default function Slide04Forward() {
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        className="relative z-10 text-4xl font-display font-bold text-neon-primary mb-2"
+        className="relative z-10 text-7xl font-display font-bold text-neon-primary mb-4"
       >
         Forward Process
       </motion.h2>
@@ -22,7 +22,7 @@ export default function Slide04Forward() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="relative z-10 text-neon-muted mb-8"
+        className="relative z-10 text-2xl text-neon-muted mb-12"
       >
         Processus de bruitage progressif q(xₜ|x₀)
       </motion.p>
