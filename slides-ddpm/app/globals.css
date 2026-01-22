@@ -46,13 +46,7 @@ body {
 }
 
 .scanline {
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, 0.1) 50%
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
+  display: none;
 }
 
 .noise-overlay {

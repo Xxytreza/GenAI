@@ -8,6 +8,7 @@ interface NeonCardProps {
   className?: string;
   delay?: number;
   glow?: "cyan" | "magenta" | "violet";
+  title?: string;
 }
 
 export default function NeonCard({
@@ -15,11 +16,18 @@ export default function NeonCard({
   className = "",
   delay = 0,
   glow = "cyan",
+  title,
 }: NeonCardProps) {
   const glowColors = {
     cyan: "border-neon-primary/50 shadow-neon-cyan",
     magenta: "border-neon-secondary/50 shadow-neon-magenta",
     violet: "border-neon-accent/50 shadow-neon-violet",
+  };
+
+  const textColors = {
+    cyan: "text-neon-primary",
+    magenta: "text-neon-secondary",
+    violet: "text-neon-accent",
   };
 
   return (
@@ -28,12 +36,21 @@ export default function NeonCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: "easeOut" }}
       className={`
-        bg-neon-bg/80 backdrop-blur-md rounded-xl border-2 p-6
+        bg-neon-bg/80 backdrop-blur-md rounded-xl border-2 p-6 relative
         ${glowColors[glow]}
         ${className}
       `}
     >
-      {children}
+      {title && (
+        <div className="absolute -top-4 left-6 bg-neon-bg px-3 z-10">
+          <h3 className={`text-lg font-bold tracking-wider uppercase ${textColors[glow]}`}>
+            {title}
+          </h3>
+        </div>
+      )}
+      <div className="h-full">
+        {children}
+      </div>
     </motion.div>
   );
 }
