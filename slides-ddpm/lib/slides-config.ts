@@ -18,7 +18,7 @@ export const SLIDES: SlideConfig[] = [
   { id: 9, title: "Visualisation", subtitle: "Reverse Denoising", bgIntensity: 100, bgColor: "#ff00aa" },
   { id: 10, title: "Résultats", subtitle: "Métriques & Galerie", bgIntensity: 80, bgColor: "#00f0ff" },
   { id: 11, title: "Comparaison", subtitle: "Generated vs Real", bgIntensity: 60, bgColor: "#8b5cf6" },
-  { id: 12, title: "Merci", subtitle: "Questions ?", bgIntensity: 200, bgColor: "#ff00aa" },
+  { id: 12, title: "Merci", bgIntensity: 200, bgColor: "#ff00aa" },
 ];
 
 export const TOTAL_SLIDES = SLIDES.length;

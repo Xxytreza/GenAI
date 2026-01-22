@@ -29,14 +29,6 @@ export default function Slide12Merci() {
             className="text-neon-secondary text-glow-magenta"
           />
         </h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-2xl text-neon-primary font-display"
-        >
-          Questions ?
-        </motion.p>
       </motion.div>
 
       <motion.div
