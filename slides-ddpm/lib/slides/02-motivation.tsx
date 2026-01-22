@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "../../components/ParticleBackground";
-import NeonCard from "../../components/NeonCard";
+import ParticleBackground from "@/components/ParticleBackground";
+import NeonCard from "@/components/NeonCard";
 
 export default function Slide02Motivation() {
   const models = [

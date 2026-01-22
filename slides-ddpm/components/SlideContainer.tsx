@@ -3,7 +3,7 @@
 import { useEffect, useCallback, ReactNode, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { TOTAL_SLIDES } from "../lib/slides-config";
+import { TOTAL_SLIDES } from "@/lib/slides-config";
 
 interface SlideContainerProps {
   children: ReactNode;

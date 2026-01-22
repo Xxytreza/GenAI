@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "../../components/ParticleBackground";
-import UNetDiagram from "../../components/UNetDiagram";
-import NeonCard from "../../components/NeonCard";
+import ParticleBackground from "@/components/ParticleBackground";
+import UNetDiagram from "@/components/UNetDiagram";
+import NeonCard from "@/components/NeonCard";
 
 export default function Slide05UNet() {
   const specs = [

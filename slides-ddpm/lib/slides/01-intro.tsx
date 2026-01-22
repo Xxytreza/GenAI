@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "../../components/ParticleBackground";
-import GlitchText from "../../components/GlitchText";
-import { TEAM_MEMBERS } from "../slides-config";
+import ParticleBackground from "@/components/ParticleBackground";
+import GlitchText from "@/components/GlitchText";
+import { TEAM_MEMBERS } from "@/lib/slides-config";
 
 export default function Slide01Intro() {
   return (

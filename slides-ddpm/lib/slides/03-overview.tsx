@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "../../components/ParticleBackground";
+import ParticleBackground from "@/components/ParticleBackground";
 
 export default function Slide03Overview() {
   return (

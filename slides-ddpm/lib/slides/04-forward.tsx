@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "../../components/ParticleBackground";
-import FormulaBlock from "../../components/FormulaBlock";
-import NeonCard from "../../components/NeonCard";
+import ParticleBackground from "@/components/ParticleBackground";
+import FormulaBlock from "@/components/FormulaBlock";
+import NeonCard from "@/components/NeonCard";
 
 export default function Slide04Forward() {
   return (
