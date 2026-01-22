@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "@/components/ParticleBackground";
+import ParticleBackground from "../../components/ParticleBackground";
 
 export default function Slide03Overview() {
   return (
-    <div className="relative flex-1 flex flex-col p-12 overflow-hidden">
+    <div className="relative flex-1 flex flex-col p-8 overflow-hidden">
       <ParticleBackground intensity={80} color="#00f0ff" />
 
       <motion.h2

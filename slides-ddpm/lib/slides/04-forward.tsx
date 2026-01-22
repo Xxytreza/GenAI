@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "@/components/ParticleBackground";
-import FormulaBlock from "@/components/FormulaBlock";
-import NeonCard from "@/components/NeonCard";
+import ParticleBackground from "../../components/ParticleBackground";
+import FormulaBlock from "../../components/FormulaBlock";
+import NeonCard from "../../components/NeonCard";
 
 export default function Slide04Forward() {
   return (
-    <div className="relative flex-1 flex flex-col p-12 overflow-hidden">
+    <div className="relative flex-1 flex flex-col p-8 overflow-hidden">
       <ParticleBackground intensity={70} color="#00f0ff" />
 
       <motion.h2

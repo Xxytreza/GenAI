@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleBackground from "@/components/ParticleBackground";
-import UNetDiagram from "@/components/UNetDiagram";
-import NeonCard from "@/components/NeonCard";
+import ParticleBackground from "../../components/ParticleBackground";
+import UNetDiagram from "../../components/UNetDiagram";
+import NeonCard from "../../components/NeonCard";
 
 export default function Slide05UNet() {
   const specs = [
@@ -14,13 +14,13 @@ export default function Slide05UNet() {
   ];
 
   return (
-    <div className="relative flex-1 flex flex-col p-12 overflow-hidden">
+    <div className="relative flex-1 flex flex-col p-8 overflow-hidden">
       <ParticleBackground intensity={50} color="#ff00aa" />
 
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        className="relative z-10 text-4xl font-display font-bold text-neon-primary mb-2"
+        className="relative z-10 text-4xl font-display font-bold text-neon-primary mb-1"
       >
         Architecture U-Net
       </motion.h2>
@@ -29,20 +29,22 @@ export default function Slide05UNet() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="relative z-10 text-neon-muted mb-6"
+        className="relative z-10 text-neon-muted mb-4"
       >
         Réseau ε_θ(xₜ, t) pour prédire le bruit
       </motion.p>
 
-      <div className="relative z-10 flex-1 flex flex-col">
-        <UNetDiagram />
+      <div className="relative z-10 flex-1 flex flex-col min-h-0">
+        <div className="flex-1 min-h-0">
+          <UNetDiagram />
+        </div>
 
-        <div className="mt-8 grid grid-cols-4 gap-4">
+        <div className="mt-4 grid grid-cols-4 gap-4">
           {specs.map((spec, i) => (
-            <NeonCard key={spec.label} delay={2.5 + i * 0.1} glow="cyan" className="py-4">
+            <NeonCard key={spec.label} delay={2.5 + i * 0.1} glow="cyan" className="py-3 px-4">
               <div className="text-center">
-                <p className="text-neon-muted text-xs uppercase tracking-wide">{spec.label}</p>
-                <p className="text-neon-primary font-mono text-lg font-bold mt-1">{spec.value}</p>
+                <p className="text-neon-muted text-[10px] uppercase tracking-wide">{spec.label}</p>
+                <p className="text-neon-primary font-mono text-base font-bold mt-0.5">{spec.value}</p>
               </div>
             </NeonCard>
           ))}
@@ -52,7 +54,7 @@ export default function Slide05UNet() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3 }}
-          className="mt-6 grid grid-cols-3 gap-6 text-sm"
+          className="mt-4 grid grid-cols-3 gap-6 text-sm"
         >
           <div className="flex items-start gap-2">
             <span className="text-neon-primary mt-1">▸</span>
