@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Fragment } from "react";
 import ParticleBackground from "@/components/ParticleBackground";
 import NeonCard from "@/components/NeonCard";
 
@@ -45,7 +46,7 @@ export default function Slide08VizForward() {
             ))}
 
             {timesteps.map((t, rowIdx) => (
-              <React.Fragment key={t}>
+              <Fragment key={t}>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -84,7 +85,7 @@ export default function Slide08VizForward() {
                     />
                   </motion.div>
                 ))}
-              </React.Fragment>
+              </Fragment>
             ))}
           </div>
         </NeonCard>
