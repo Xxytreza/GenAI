@@ -27,6 +27,31 @@ export default function UNetDiagram() {
     { from: "down2", to: "up1", y: 280 },
   ];
 
+  const Packet = ({ from, to, delay = 0 }: { from: string, to: string, delay?: number }) => {
+    const fromBlock = blocks.find((b) => b.id === from)!;
+    const toBlock = blocks.find((b) => b.id === to)!;
+    
+    return (
+      <motion.circle
+        r="3"
+        fill="#ffffff"
+        initial={{ cx: fromBlock.x + 40, cy: fromBlock.y + 25, opacity: 0 }}
+        animate={{ 
+          cx: [fromBlock.x + 40, toBlock.x],
+          cy: [fromBlock.y + 25, toBlock.y + 25],
+          opacity: [0, 1, 0]
+        }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity, 
+          delay,
+          ease: "linear" 
+        }}
+        style={{ filter: "blur(1px)" }}
+      />
+    );
+  };
+
   return (
     <div className="relative w-full h-[500px]">
       <svg className="w-full h-full" viewBox="0 0 750 350">
@@ -34,18 +59,21 @@ export default function UNetDiagram() {
           const fromBlock = blocks.find((b) => b.id === conn.from)!;
           const toBlock = blocks.find((b) => b.id === conn.to)!;
           return (
-            <motion.line
-              key={i}
-              x1={fromBlock.x + 40}
-              y1={fromBlock.y + 25}
-              x2={toBlock.x}
-              y2={toBlock.y + 25}
-              stroke="#00f0ff"
-              strokeWidth="2"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.6 }}
-              transition={{ delay: i * 0.2, duration: 0.5 }}
-            />
+            <g key={i}>
+              <motion.line
+                x1={fromBlock.x + 40}
+                y1={fromBlock.y + 25}
+                x2={toBlock.x}
+                y2={toBlock.y + 25}
+                stroke="#00f0ff"
+                strokeWidth="2"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.6 }}
+                transition={{ delay: i * 0.2, duration: 0.5 }}
+              />
+              <Packet from={conn.from} to={conn.to} delay={i * 0.5} />
+              <Packet from={conn.from} to={conn.to} delay={i * 0.5 + 1} />
+            </g>
           );
         })}
 
@@ -53,19 +81,41 @@ export default function UNetDiagram() {
           const fromBlock = blocks.find((b) => b.id === skip.from)!;
           const toBlock = blocks.find((b) => b.id === skip.to)!;
           return (
-            <motion.path
-              key={`skip-${i}`}
-              d={`M ${fromBlock.x + 20} ${fromBlock.y + 50} 
-                  Q ${fromBlock.x + 20} ${skip.y} ${(fromBlock.x + toBlock.x) / 2 + 20} ${skip.y}
-                  Q ${toBlock.x + 20} ${skip.y} ${toBlock.x + 20} ${toBlock.y + 50}`}
-              fill="none"
-              stroke="#ff00aa"
-              strokeWidth="2"
-              strokeDasharray="5,5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.8 }}
-              transition={{ delay: 1.5 + i * 0.3, duration: 0.8 }}
-            />
+            <g key={`skip-${i}`}>
+              <motion.path
+                d={`M ${fromBlock.x + 20} ${fromBlock.y + 50} 
+                    Q ${fromBlock.x + 20} ${skip.y} ${(fromBlock.x + toBlock.x) / 2 + 20} ${skip.y}
+                    Q ${toBlock.x + 20} ${skip.y} ${toBlock.x + 20} ${toBlock.y + 50}`}
+                fill="none"
+                stroke="#ff00aa"
+                strokeWidth="2"
+                strokeDasharray="5,5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.8 }}
+                transition={{ delay: 1.5 + i * 0.3, duration: 0.8 }}
+              />
+              {/* Skip connection packet */}
+              <motion.circle
+                r="2"
+                fill="#ff00aa"
+                animate={{ 
+                  offsetDistance: ["0%", "100%"],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  delay: 2 + i,
+                  ease: "easeInOut" 
+                }}
+                style={{ 
+                  motionPath: `M ${fromBlock.x + 20} ${fromBlock.y + 50} 
+                    Q ${fromBlock.x + 20} ${skip.y} ${(fromBlock.x + toBlock.x) / 2 + 20} ${skip.y}
+                    Q ${toBlock.x + 20} ${skip.y} ${toBlock.x + 20} ${toBlock.y + 50}`,
+                  filter: "drop-shadow(0 0 5px #ff00aa)"
+                } as any}
+              />
+            </g>
           );
         })}
 
