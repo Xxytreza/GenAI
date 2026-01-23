@@ -14,6 +14,7 @@ interface SlideContainerProps {
 export default function SlideContainer({ children, slideNumber }: SlideContainerProps) {
   const router = useRouter();
   const [scale, setScale] = useState(1);
+  const [isWarping, setIsWarping] = useState(false);
   const currentSlide = SLIDES.find(s => s.id === slideNumber);
 
   const handleResize = useCallback(() => {
@@ -28,9 +29,17 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
   const navigate = useCallback(
     (direction: "prev" | "next") => {
       if (direction === "next" && slideNumber < TOTAL_SLIDES) {
-        router.push(`/slides/${slideNumber + 1}`);
+        setIsWarping(true);
+        setTimeout(() => {
+          router.push(`/slides/${slideNumber + 1}`);
+          setTimeout(() => setIsWarping(false), 300);
+        }, 50);
       } else if (direction === "prev" && slideNumber > 1) {
-        router.push(`/slides/${slideNumber - 1}`);
+        setIsWarping(true);
+        setTimeout(() => {
+          router.push(`/slides/${slideNumber - 1}`);
+          setTimeout(() => setIsWarping(false), 300);
+        }, 50);
       }
     },
     [router, slideNumber]
@@ -58,12 +67,28 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
   }, [navigate, handleResize]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-neon-bg flex items-center justify-center">
+    <div className="relative w-screen h-screen overflow-hidden bg-neon-bg flex items-center justify-center perspective-[2000px]">
+      {/* CRT Scanline */}
+      <div className="scanline" />
+      
       {/* Background toujours en full screen réel */}
       <ParticleBackground 
         intensity={currentSlide?.bgIntensity || 100} 
         color={currentSlide?.bgColor || "#00f0ff"} 
+        warpSpeed={isWarping}
       />
+
+      {/* Glitch Flash Overlay */}
+      <AnimatePresence>
+        {isWarping && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.2 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-[100] bg-white pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
 
       {/* Wrapper de scaling intelligent */}
       <div 
@@ -74,15 +99,36 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
           height: "1080px",
           flexShrink: 0
         }}
-        className="relative z-10 overflow-hidden flex flex-col"
+        className={`relative z-10 overflow-hidden flex flex-col ${isWarping ? "chromatic-aberration" : ""}`}
       >
         <AnimatePresence mode="wait">
           <motion.div
             key={slideNumber}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            initial={{ 
+              opacity: 0, 
+              scale: 0.8,
+              rotateY: 20,
+              z: -500,
+              filter: "blur(10px)"
+            }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              rotateY: 0,
+              z: 0,
+              filter: "blur(0px)"
+            }}
+            exit={{ 
+              opacity: 0, 
+              scale: 1.2,
+              rotateY: -20,
+              z: 200,
+              filter: "blur(10px)"
+            }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.22, 1, 0.36, 1] 
+            }}
             className="w-full h-full flex flex-col p-8"
           >
             {children}
