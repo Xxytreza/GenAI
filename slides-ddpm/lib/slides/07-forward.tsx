@@ -53,24 +53,27 @@ export default function SlideForward() {
             <h3 className="text-neon-secondary font-display font-bold mb-4">
               Formules mathématiques
             </h3>
-            <div className="flex-1 flex flex-col justify-center space-y-3 text-neon-text pb-4">
-              <p className="text-sm text-neon-muted mb-2">Processus de diffusion à chaque étape :</p>
+            <div className="flex-1 flex flex-col justify-center space-y-2 text-neon-text pb-4">
+              <div className="flex justify-between items-center">
+                <p className="text-sm text-neon-muted">Processus par étape :</p>
+                <span className="text-[10px] text-neon-muted/60 italic">ε ~ N(0, I)</span>
+              </div>
               <FormulaBlock 
                 formula="q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)"
                 delay={1.0}
-                className="mb-3 [&_.katex]:!text-base [&_.katex-display]:!text-base"
+                className="mb-1 [&_.katex]:!text-2xl [&_.katex-display]:!text-2xl"
               />
-              <p className="text-sm text-neon-muted mt-3 mb-2">
-                <span className="text-neon-secondary font-bold">Trick de reparamétrisation :</span>
-              </p>
+              <div className="flex justify-between items-center mt-2">
+                <p className="text-sm text-neon-muted">
+                  <span className="text-neon-secondary font-bold">Trick de reparamétrisation :</span>
+                </p>
+                <span className="text-[10px] text-neon-muted/60 italic">α̅ₜ = ∏ᵢ₌₁ᵗ αᵢ</span>
+              </div>
               <FormulaBlock 
                 formula="x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \varepsilon"
                 delay={1.2}
-                className="[&_.katex]:!text-base [&_.katex-display]:!text-base"
+                className="[&_.katex]:!text-2xl [&_.katex-display]:!text-2xl"
               />
-              <p className="text-xs text-neon-muted mt-2">
-                où α̅ₜ = ∏ᵢ₌₁ᵗ αᵢ et ε ~ N(0, I)
-              </p>
             </div>
           </NeonCard>
         </div>
