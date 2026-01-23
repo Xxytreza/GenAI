@@ -11,11 +11,11 @@ import Slide09VizForwardGif from '@/lib/slides/09-viz-forward-gif';
 import Slide10Reverse from '@/lib/slides/10-reverse';
 import Slide11UNet from '@/lib/slides/11-unet';
 import Slide12Training from '@/lib/slides/12-training';
-import Slide13VizReverse from '@/lib/slides/13-viz-reverse';
-import Slide14VizReverseGif from '@/lib/slides/14-viz-reverse-gif';
-import Slide15Evaluation from '@/lib/slides/15-evaluation';
-import Slide16MathematicalFormulas from '@/lib/slides/16-mathematical-formulas';
-import Slide17SamplingFormula from '@/lib/slides/17-sampling-formula';
+import Slide13MathematicalFormulas from '@/lib/slides/13-mathematical-formulas';
+import Slide14SamplingFormula from '@/lib/slides/14-sampling-formula';
+import Slide15VizReverse from '@/lib/slides/15-viz-reverse';
+import Slide16VizReverseGif from '@/lib/slides/16-viz-reverse-gif';
+import Slide17Evaluation from '@/lib/slides/17-evaluation';
 import Slide18Results from '@/lib/slides/18-results';
 import Slide19Comparison from '@/lib/slides/19-comparison';
 import Slide20Merci from '@/lib/slides/20-merci';
@@ -34,11 +34,11 @@ const SLIDE_COMPONENTS: Record<number, React.ComponentType> = {
   10: Slide10Reverse,
   11: Slide11UNet,
   12: Slide12Training,
-  13: Slide13VizReverse,
-  14: Slide14VizReverseGif,
-  15: Slide15Evaluation,
-  16: Slide16MathematicalFormulas,
-  17: Slide17SamplingFormula,
+  13: Slide13MathematicalFormulas,
+  14: Slide14SamplingFormula,
+  15: Slide15VizReverse,
+  16: Slide16VizReverseGif,
+  17: Slide17Evaluation,
   18: Slide18Results,
   19: Slide19Comparison,
   20: Slide20Merci,
