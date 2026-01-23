@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import NeonCard from "@/components/NeonCard";
+import { Brain, Swords, Waves, Sparkles } from "lucide-react";
 
 export default function Slide02Motivation() {
   const models = [
@@ -9,7 +10,7 @@ export default function Slide02Motivation() {
       name: "VAEs", 
       year: "2013", 
       desc: "Latent space encoding", 
-      icon: "🔮",
+      icon: Brain,
       authors: "Kingma & Welling",
       paper: "Auto-Encoding Variational Bayes"
     },
@@ -17,7 +18,7 @@ export default function Slide02Motivation() {
       name: "GANs", 
       year: "2014", 
       desc: "Adversarial training", 
-      icon: "⚔️",
+      icon: Swords,
       authors: "Goodfellow et al.",
       paper: "Generative Adversarial Nets"
     },
@@ -25,7 +26,7 @@ export default function Slide02Motivation() {
       name: "Flow", 
       year: "2015", 
       desc: "Invertible transforms", 
-      icon: "🌊",
+      icon: Waves,
       authors: "Dinh et al.",
       paper: "NICE / Real NVP"
     },
@@ -33,7 +34,7 @@ export default function Slide02Motivation() {
       name: "Diffusion", 
       year: "2020", 
       desc: "Denoising process", 
-      icon: "✨",
+      icon: Sparkles,
       authors: "Ho, Jain, Abbeel",
       paper: "DDPM (arXiv:2006.11239)"
     },
@@ -73,9 +74,13 @@ export default function Slide02Motivation() {
                   initial={{ scale: 0, rotate: -20 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.8 + i * 0.2, type: "spring", stiffness: 200 }}
-                  className="text-5xl mb-4 filter drop-shadow-sm"
+                  className="flex justify-center mb-4 filter drop-shadow-sm"
                 >
-                  {model.icon}
+                  <model.icon 
+                    size={48} 
+                    strokeWidth={1.5} 
+                    className={model.name === "Diffusion" ? "text-neon-secondary" : "text-neon-primary"} 
+                  />
                 </motion.div>
                 <h3 className="text-2xl font-display font-black text-neon-text tracking-tight mb-1.5">
                   {model.name}
