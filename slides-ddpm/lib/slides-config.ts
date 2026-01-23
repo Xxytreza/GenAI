@@ -22,10 +22,11 @@ export const SLIDES: SlideConfig[] = [
   { id: 13, title: "Visualisation", subtitle: "Reverse Denoising", bgIntensity: 100, bgColor: "#ff00aa" },
   { id: 14, title: "Animation Reverse", subtitle: "Débruitage progressif", bgIntensity: 90, bgColor: "#ff00aa" },
   { id: 15, title: "Évaluation", subtitle: "Mesurer la qualité", bgIntensity: 80, bgColor: "#00f0ff" },
-  { id: 16, title: "Prédiction Mathématique", subtitle: "ε_θ(xₜ, t) et x_{t-1}", bgIntensity: 70, bgColor: "#8b5cf6" },
-  { id: 17, title: "Résultats", subtitle: "Métriques & Galerie", bgIntensity: 80, bgColor: "#8b5cf6" },
-  { id: 18, title: "Comparaison", subtitle: "Generated vs Real", bgIntensity: 60, bgColor: "#ff00aa" },
-  { id: 19, title: "Merci", bgIntensity: 200, bgColor: "#ff00aa" },
+  { id: 16, title: "Prédiction Mathématique", subtitle: "ε_θ(xₜ, t)", bgIntensity: 70, bgColor: "#00f0ff" },
+  { id: 17, title: "Formule de Sampling", subtitle: "x_{t-1} et processus", bgIntensity: 70, bgColor: "#8b5cf6" },
+  { id: 18, title: "Résultats", subtitle: "Métriques & Galerie", bgIntensity: 80, bgColor: "#ff00aa" },
+  { id: 19, title: "Comparaison", subtitle: "Generated vs Real", bgIntensity: 60, bgColor: "#8b5cf6" },
+  { id: 20, title: "Merci", bgIntensity: 200, bgColor: "#ff00aa" },
 ];
 
 export const TOTAL_SLIDES = SLIDES.length;
