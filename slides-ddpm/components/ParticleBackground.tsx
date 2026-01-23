@@ -11,6 +11,7 @@ interface Particle {
   opacity: number;
   baseVx: number;
   baseVy: number;
+  isRocket: boolean;
 }
 
 interface ParticleBackgroundProps {
@@ -43,9 +44,12 @@ export default function ParticleBackground({
     resize();
     window.addEventListener("resize", resize);
 
-    particlesRef.current = Array.from({ length: intensity }, () => {
-      const vx = (Math.random() - 0.5) * 0.5;
-      const vy = (Math.random() - 0.5) * 0.5;
+    particlesRef.current = Array.from({ length: intensity }, (_, i) => {
+      // 5% of particles are rockets
+      const isRocket = i < intensity * 0.05;
+      const vx = (Math.random() - 0.5) * (isRocket ? 4 : 0.5);
+      const vy = (Math.random() - 0.5) * (isRocket ? 4 : 0.5);
+      
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -53,8 +57,9 @@ export default function ParticleBackground({
         vy,
         baseVx: vx,
         baseVy: vy,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
+        size: isRocket ? Math.random() * 3 + 2 : Math.random() * 2 + 0.5,
+        opacity: isRocket ? Math.random() * 0.5 + 0.5 : Math.random() * 0.5 + 0.1,
+        isRocket,
       };
     });
 
@@ -63,12 +68,15 @@ export default function ParticleBackground({
       const targetWarp = warpSpeed ? 20 : 1;
       warpFactorRef.current += (targetWarp - warpFactorRef.current) * 0.1;
 
-      ctx.fillStyle = warpSpeed ? "rgba(10, 10, 15, 0.3)" : "rgba(10, 10, 15, 0.1)";
+      // Clear background with fade effect to prevent trail accumulation
+      // Using a slightly higher opacity for the clear rect to ensure trails disappear
+      ctx.fillStyle = warpSpeed ? "rgba(10, 10, 15, 0.4)" : "rgba(10, 10, 15, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particlesRef.current.forEach((p) => {
-        p.x += p.baseVx * warpFactorRef.current;
-        p.y += p.baseVy * warpFactorRef.current;
+        const speedMultiplier = p.isRocket ? 2 : 1;
+        p.x += p.baseVx * warpFactorRef.current * speedMultiplier;
+        p.y += p.baseVy * warpFactorRef.current * speedMultiplier;
 
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
@@ -76,10 +84,14 @@ export default function ParticleBackground({
         if (p.y > canvas.height) p.y = 0;
 
         ctx.beginPath();
-        if (warpFactorRef.current > 2) {
-          // Draw streaks during warp
+        
+        const isWarping = warpFactorRef.current > 2;
+        
+        if (isWarping || p.isRocket) {
+          // Draw streaks during warp or for rockets
+          const trailLength = isWarping ? warpFactorRef.current * 2 : 15;
           ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p.x - p.baseVx * warpFactorRef.current * 2, p.y - p.baseVy * warpFactorRef.current * 2);
+          ctx.lineTo(p.x - p.baseVx * trailLength, p.y - p.baseVy * trailLength);
           ctx.lineWidth = p.size;
         } else {
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -89,10 +101,13 @@ export default function ParticleBackground({
         const r = parseInt(hex.substring(0, 2), 16);
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${p.opacity})`;
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${p.opacity})`;
         
-        if (warpFactorRef.current > 2) ctx.stroke();
+        // Rockets are brighter
+        const currentOpacity = p.isRocket ? Math.min(1, p.opacity * 1.5) : p.opacity;
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${currentOpacity})`;
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${currentOpacity})`;
+        
+        if (isWarping || p.isRocket) ctx.stroke();
         else ctx.fill();
       });
 
