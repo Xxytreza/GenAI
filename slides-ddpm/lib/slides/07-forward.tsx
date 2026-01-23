@@ -3,6 +3,7 @@
 import React from "react";
 import NeonCard from "../../components/NeonCard";
 import GlitchText from "../../components/GlitchText";
+import FormulaBlock from "../../components/FormulaBlock";
 import { motion } from "framer-motion";
 
 export default function SlideForward() {
@@ -50,15 +51,25 @@ export default function SlideForward() {
 
           <NeonCard delay={0.8} glow="magenta" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-secondary font-display font-bold mb-4">
-              Propriété clé
+              Formules mathématiques
             </h3>
             <div className="flex-1 flex flex-col justify-center space-y-3 text-neon-text pb-4">
-              <p className="text-lg">
+              <p className="text-sm text-neon-muted mb-2">Processus de diffusion à chaque étape :</p>
+              <FormulaBlock 
+                formula="q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)"
+                delay={1.0}
+                className="mb-3 [&_.katex]:!text-base [&_.katex-display]:!text-base"
+              />
+              <p className="text-sm text-neon-muted mt-3 mb-2">
                 <span className="text-neon-secondary font-bold">Trick de reparamétrisation :</span>
               </p>
-              <p className="text-base leading-relaxed">
-                On peut calculer n'importe quelle étape <span className="text-neon-secondary font-bold">directement</span>
-                {" "}sans passer par toutes les étapes intermédiaires
+              <FormulaBlock 
+                formula="x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \varepsilon"
+                delay={1.2}
+                className="[&_.katex]:!text-base [&_.katex-display]:!text-base"
+              />
+              <p className="text-xs text-neon-muted mt-2">
+                où α̅ₜ = ∏ᵢ₌₁ᵗ αᵢ et ε ~ N(0, I)
               </p>
             </div>
           </NeonCard>

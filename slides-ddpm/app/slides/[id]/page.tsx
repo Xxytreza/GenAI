@@ -14,9 +14,10 @@ import Slide12Training from '@/lib/slides/12-training';
 import Slide13VizReverse from '@/lib/slides/13-viz-reverse';
 import Slide14VizReverseGif from '@/lib/slides/14-viz-reverse-gif';
 import Slide15Evaluation from '@/lib/slides/15-evaluation';
-import Slide16Results from '@/lib/slides/16-results';
-import Slide17Comparison from '@/lib/slides/17-comparison';
-import Slide18Merci from '@/lib/slides/18-merci';
+import Slide16MathematicalFormulas from '@/lib/slides/15b-mathematical-formulas';
+import Slide17Results from '@/lib/slides/16-results';
+import Slide18Comparison from '@/lib/slides/17-comparison';
+import Slide19Merci from '@/lib/slides/18-merci';
 import { TOTAL_SLIDES } from "@/lib/slides-config";
 
 const SLIDE_COMPONENTS: Record<number, React.ComponentType> = {
@@ -35,9 +36,10 @@ const SLIDE_COMPONENTS: Record<number, React.ComponentType> = {
   13: Slide13VizReverse,
   14: Slide14VizReverseGif,
   15: Slide15Evaluation,
-  16: Slide16Results,
-  17: Slide17Comparison,
-  18: Slide18Merci,
+  16: Slide16MathematicalFormulas,
+  17: Slide17Results,
+  18: Slide18Comparison,
+  19: Slide19Merci,
 };
 
 export function generateStaticParams() {

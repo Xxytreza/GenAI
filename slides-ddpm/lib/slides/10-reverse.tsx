@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import ParticleBackground from "@/components/ParticleBackground";
 import NeonCard from "@/components/NeonCard";
+import FormulaBlock from "@/components/FormulaBlock";
 
 export default function Slide06Reverse() {
   return (
@@ -72,45 +73,23 @@ export default function Slide06Reverse() {
         <div className="space-y-6 flex flex-col min-h-0">
           <NeonCard delay={1.2} glow="violet" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-accent font-display font-bold mb-4">
-              Algorithme de génération
+              Formules mathématiques
             </h3>
-            <div className="flex-1 flex flex-col justify-center space-y-4 text-neon-text pb-4">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.4 }}
-                className="flex items-start gap-3"
-              >
-                <span className="text-neon-accent text-2xl font-bold">1.</span>
-                <p className="text-lg">On commence avec du <span className="text-neon-accent font-bold">bruit pur</span></p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.6 }}
-                className="flex items-start gap-3"
-              >
-                <span className="text-neon-accent text-2xl font-bold">2.</span>
-                <p className="text-lg">Le U-Net <span className="text-neon-accent font-bold">prédit et retire du bruit</span></p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.8 }}
-                className="flex items-start gap-3"
-              >
-                <span className="text-neon-accent text-2xl font-bold">3.</span>
-                <p className="text-lg">On répète <span className="text-neon-accent font-bold">1000 fois</span></p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 2 }}
-                className="flex items-start gap-3"
-              >
-                <span className="text-neon-accent text-2xl font-bold">4.</span>
-                <p className="text-lg">On obtient une <span className="text-neon-accent font-bold">image nette</span></p>
-              </motion.div>
+            <div className="flex-1 flex flex-col justify-center space-y-3 text-neon-text pb-4">
+              <p className="text-sm text-neon-muted mb-2">Processus inverse (débruitage) :</p>
+              <FormulaBlock 
+                formula="p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 I)"
+                delay={1.4}
+                className="mb-3"
+              />
+              <p className="text-sm text-neon-muted mb-2">Formule de sampling :</p>
+              <FormulaBlock 
+                formula="x_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \varepsilon_\theta(x_t, t)\right) + \sigma_t z"
+                delay={1.6}
+              />
+              <p className="text-xs text-neon-muted mt-2">
+                où ε_θ(xₜ, t) est le bruit prédit par le U-Net
+              </p>
             </div>
           </NeonCard>
 
