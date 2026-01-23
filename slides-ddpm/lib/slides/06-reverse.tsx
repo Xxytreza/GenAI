@@ -26,13 +26,13 @@ export default function Slide06Reverse() {
         Processus de débruitage p(xₜ₋₁|xₜ)
       </motion.p>
 
-      <div className="relative z-10 flex-1 grid grid-cols-2 gap-8">
-        <div className="space-y-8">
-          <NeonCard delay={0.4} glow="magenta">
+      <div className="relative z-10 flex-1 grid grid-cols-2 gap-8 min-h-0">
+        <div className="space-y-6 flex flex-col min-h-0">
+          <NeonCard delay={0.4} glow="magenta" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-secondary font-display font-bold mb-4">
               Distribution apprise
             </h3>
-            <div className="pb-2">
+            <div className="flex-1 flex items-center justify-center pb-4">
               <FormulaBlock
                 formula="p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 \mathbf{I})"
                 delay={0.6}
@@ -40,11 +40,11 @@ export default function Slide06Reverse() {
             </div>
           </NeonCard>
 
-          <NeonCard delay={0.8} glow="cyan">
+          <NeonCard delay={0.8} glow="cyan" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-primary font-display font-bold mb-4">
               Calcul de μ_θ
             </h3>
-            <div className="pb-2">
+            <div className="flex-1 flex items-center justify-center pb-4">
               <FormulaBlock
                 formula="\mu_\theta = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t) \right)"
                 delay={1}
@@ -53,12 +53,12 @@ export default function Slide06Reverse() {
           </NeonCard>
         </div>
 
-        <div className="space-y-8">
-          <NeonCard delay={1.2} glow="violet">
+        <div className="space-y-6 flex flex-col min-h-0">
+          <NeonCard delay={1.2} glow="violet" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-accent font-display font-bold mb-4">
               Algorithme de sampling
             </h3>
-            <div className="font-mono text-sm space-y-2">
+            <div className="font-mono text-xs space-y-1 flex-1 flex flex-col justify-center pb-4">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -106,10 +106,10 @@ export default function Slide06Reverse() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 2.4 }}
-            className="p-4 bg-neon-secondary/10 border border-neon-secondary/30 rounded-xl text-center"
+            className="p-3 bg-neon-secondary/10 border border-neon-secondary/30 rounded-xl text-center"
           >
-            <p className="text-neon-secondary font-display font-bold">1000 étapes</p>
-            <p className="text-neon-muted text-sm">de débruitage itératif</p>
+            <p className="text-neon-secondary font-display font-bold text-sm">1000 étapes</p>
+            <p className="text-neon-muted text-xs">de débruitage itératif</p>
           </motion.div>
         </div>
       </div>

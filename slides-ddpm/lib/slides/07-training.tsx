@@ -42,13 +42,13 @@ export default function Slide07Training() {
         Fonction de perte simple L_simple
       </motion.p>
 
-      <div className="relative z-10 flex-1 grid grid-cols-2 gap-8">
-        <div className="space-y-6">
-          <NeonCard delay={0.3} glow="violet">
+      <div className="relative z-10 flex-1 grid grid-cols-2 gap-8 min-h-0">
+        <div className="space-y-6 flex flex-col min-h-0">
+          <NeonCard delay={0.3} glow="violet" className="flex-1 min-h-0 flex flex-col">
             <h3 className="text-neon-accent font-display font-bold mb-6">
               Objective
             </h3>
-            <div className="pb-2">
+            <div className="flex-1 flex items-center justify-center pb-4">
               <FormulaBlock
                 formula="L_{simple} = \mathbb{E}_{t, x_0, \epsilon}\left[ \| \epsilon - \epsilon_\theta(x_t, t) \|^2 \right]"
                 delay={0.5}

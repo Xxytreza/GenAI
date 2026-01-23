@@ -12,17 +12,17 @@ export default function SlideForward() {
       </div>
 
       <div className="grid grid-cols-2 gap-8 flex-1 min-h-0">
-        <div className="space-y-8 flex flex-col h-full">
-          <NeonCard title="Distribution conditionnelle" glow="cyan" className="flex-1">
-            <div className="flex items-center justify-center h-full pt-4">
+        <div className="space-y-6 flex flex-col min-h-0">
+          <NeonCard title="Distribution conditionnelle" glow="cyan" className="flex-1 min-h-0 flex flex-col">
+            <div className="flex-1 flex items-center justify-center pt-4 pb-4">
               <FormulaBlock 
                 formula="q(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}x_0, (1 - \bar{\alpha}_t)\mathbf{I})" 
               />
             </div>
           </NeonCard>
 
-          <NeonCard title="Reparameterization Trick" glow="magenta" className="flex-1">
-            <div className="flex items-center justify-center h-full pt-4">
+          <NeonCard title="Reparameterization Trick" glow="magenta" className="flex-1 min-h-0 flex flex-col">
+            <div className="flex-1 flex items-center justify-center pt-4 pb-4">
               <FormulaBlock 
                 formula="x_t = \sqrt{\bar{\alpha}_t} \cdot x_0 + \sqrt{1 - \bar{\alpha}_t} \cdot \epsilon" 
               />
@@ -30,9 +30,9 @@ export default function SlideForward() {
           </NeonCard>
         </div>
 
-        <div className="space-y-8 flex flex-col h-full">
-          <NeonCard title="Schedule linéaire des β" glow="violet" className="flex-1">
-            <div className="space-y-4 font-mono text-lg mt-6 px-4">
+        <div className="space-y-6 flex flex-col min-h-0">
+          <NeonCard title="Schedule linéaire des β" glow="violet" className="flex-1 min-h-0 flex flex-col">
+            <div className="space-y-4 font-mono text-lg mt-6 px-4 flex-1 flex flex-col justify-center pb-4">
               <div className="flex justify-between border-b border-neon-accent/20 pb-2">
                 <span className="text-neon-accent font-bold">β₁ =</span>
                 <span className="text-white">0.0001</span>
@@ -48,8 +48,8 @@ export default function SlideForward() {
             </div>
           </NeonCard>
 
-          <NeonCard title="Définitions" glow="cyan" className="flex-1">
-            <div className="space-y-4 flex flex-col justify-center h-full pt-4 pb-2">
+          <NeonCard title="Définitions" glow="cyan" className="flex-1 min-h-0 flex flex-col">
+            <div className="space-y-4 flex flex-col justify-center flex-1 pt-4 pb-4">
               <FormulaBlock formula="\alpha_t = 1 - \beta_t" />
               <FormulaBlock formula="\bar{\alpha}_t = \prod_{s=1}^t \alpha_s" />
             </div>

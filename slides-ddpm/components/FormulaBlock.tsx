@@ -39,7 +39,7 @@ export default function FormulaBlock({
     >
       <div
         ref={containerRef}
-        className="text-neon-text bg-neon-bg/50 backdrop-blur-sm px-8 py-6 rounded-lg border border-neon-primary/30 shadow-neon-cyan/20 scale-[1.2] origin-center overflow-hidden"
+        className="text-neon-text bg-neon-bg/50 backdrop-blur-sm px-6 py-4 rounded-lg border border-neon-primary/30 shadow-neon-cyan/20 overflow-hidden [&_.katex]:text-xl [&_.katex-display]:text-xl"
       />
     </motion.div>
   );
