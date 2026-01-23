@@ -45,7 +45,7 @@ export default function Slide01Intro() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="flex flex-wrap justify-center gap-4 max-w-2xl"
+          className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
         >
           {TEAM_MEMBERS.map((member, index) => (
             <motion.div
@@ -53,7 +53,7 @@ export default function Slide01Intro() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 2.2 + index * 0.15 }}
-              className="px-4 py-2 bg-neon-bg/60 backdrop-blur-sm border border-neon-primary/30 rounded-lg"
+              className="px-4 py-2 bg-neon-bg/60 backdrop-blur-sm border border-neon-primary/30 rounded-lg whitespace-nowrap"
             >
               <span className="text-neon-text text-sm font-mono">{member}</span>
             </motion.div>

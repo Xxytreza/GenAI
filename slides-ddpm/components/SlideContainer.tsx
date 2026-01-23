@@ -18,8 +18,8 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
 
   const handleResize = useCallback(() => {
     // Base de conception plus compacte pour forcer un zoom naturel sur le texte
-    const targetWidth = 1280;
-    const targetHeight = 720;
+    const targetWidth = 1920;
+    const targetHeight = 1080;
     const widthScale = window.innerWidth / targetWidth;
     const heightScale = window.innerHeight / targetHeight;
     setScale(Math.min(widthScale, heightScale));
@@ -70,8 +70,8 @@ export default function SlideContainer({ children, slideNumber }: SlideContainer
         style={{ 
           transform: `scale(${scale})`,
           transformOrigin: "center center",
-          width: "1280px",
-          height: "720px",
+          width: "1920px",
+          height: "1080px",
           flexShrink: 0
         }}
         className="relative z-10 overflow-hidden flex flex-col"

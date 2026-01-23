@@ -15,8 +15,9 @@ export default function Slide03Overview() {
         Vue d&apos;ensemble DDPM
       </motion.h2>
 
-      <div className="relative z-10 flex-1 flex items-center justify-center">
-        <svg className="w-full max-w-4xl h-80" viewBox="0 0 800 300">
+      <div className="relative z-10 flex-1 flex items-center justify-center pl-48">
+        <div className="w-full flex justify-center">
+          <svg className="max-w-5xl h-80" viewBox="0 0 800 300" style={{ width: "100%", maxWidth: "1000px" }}>
           <motion.rect
             x="50" y="100" width="120" height="100" rx="10"
             fill="#0a0a0f" stroke="#00f0ff" strokeWidth="3"
@@ -143,6 +144,7 @@ export default function Slide03Overview() {
             Reverse Process p(xₜ₋₁|xₜ) → Débruitage avec U-Net
           </motion.text>
         </svg>
+        </div>
       </div>
 
       <motion.div

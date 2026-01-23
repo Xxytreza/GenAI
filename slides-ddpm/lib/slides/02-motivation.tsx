@@ -32,13 +32,13 @@ export default function Slide02Motivation() {
         Évolution des approches de génération d&apos;images
       </motion.p>
 
-      <div className="relative z-10 flex-1 grid grid-cols-4 gap-6">
+      <div className="relative z-10 flex-1 grid grid-cols-4 gap-6 items-center max-h-[400px]">
         {models.map((model, i) => (
           <NeonCard 
             key={model.name} 
             delay={0.5 + i * 0.2}
             glow={model.name === "Diffusion" ? "magenta" : "cyan"}
-            className={model.name === "Diffusion" ? "ring-2 ring-neon-secondary" : ""}
+            className={`h-fit ${model.name === "Diffusion" ? "ring-2 ring-neon-secondary" : ""}`}
           >
             <div className="text-center">
               <motion.div

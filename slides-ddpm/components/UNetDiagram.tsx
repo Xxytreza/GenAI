@@ -28,7 +28,7 @@ export default function UNetDiagram() {
   ];
 
   return (
-    <div className="relative w-full h-80">
+    <div className="relative w-full h-[500px]">
       <svg className="w-full h-full" viewBox="0 0 750 350">
         {connections.map((conn, i) => {
           const fromBlock = blocks.find((b) => b.id === conn.from)!;
