@@ -59,7 +59,7 @@ export default function Slide02Motivation() {
         Évolution des approches de génération d&apos;images
       </motion.p>
 
-      <div className="relative z-10 flex-1 grid grid-cols-4 gap-4 items-stretch min-h-0">
+      <div className="relative z-10 flex-[1.2] grid grid-cols-4 gap-6 items-stretch min-h-0">
         {models.map((model, i) => (
           <NeonCard 
             key={model.name} 
@@ -67,28 +67,28 @@ export default function Slide02Motivation() {
             glow={model.name === "Diffusion" ? "magenta" : "cyan"}
             className={`flex flex-col h-full transition-transform hover:scale-105 duration-300 ${model.name === "Diffusion" ? "ring-2 ring-neon-secondary/50 shadow-lg shadow-neon-secondary/20" : ""}`}
           >
-            <div className="text-center flex-1 flex flex-col justify-between py-2">
+            <div className="text-center flex-1 flex flex-col justify-between py-4">
               <div>
                 <motion.div
                   initial={{ scale: 0, rotate: -20 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.8 + i * 0.2, type: "spring", stiffness: 200 }}
-                  className="text-4xl mb-3 filter drop-shadow-sm"
+                  className="text-5xl mb-4 filter drop-shadow-sm"
                 >
                   {model.icon}
                 </motion.div>
-                <h3 className="text-xl font-display font-black text-neon-text tracking-tight mb-1">
+                <h3 className="text-2xl font-display font-black text-neon-text tracking-tight mb-1.5">
                   {model.name}
                 </h3>
-                <div className="inline-block px-2 py-0.5 bg-neon-primary/10 rounded border border-neon-primary/20 mb-2">
-                  <p className="text-neon-primary text-[10px] font-mono font-bold uppercase tracking-widest">{model.year}</p>
+                <div className="inline-block px-3 py-1 bg-neon-primary/10 rounded border border-neon-primary/20 mb-3">
+                  <p className="text-neon-primary text-xs font-mono font-bold uppercase tracking-widest">{model.year}</p>
                 </div>
-                <p className="text-neon-muted text-[11px] leading-tight px-2">{model.desc}</p>
+                <p className="text-neon-muted text-sm leading-snug px-2 font-medium">{model.desc}</p>
               </div>
               
-              <div className="mt-4 pt-3 border-t border-white/5 space-y-1">
-                <p className="text-[11px] text-neon-accent font-bold tracking-tight">{model.authors}</p>
-                <p className="text-[9px] text-neon-muted italic leading-tight opacity-80 line-clamp-2 px-1">{model.paper}</p>
+              <div className="mt-6 pt-4 border-t border-white/10 space-y-1.5">
+                <p className="text-sm text-neon-accent font-bold tracking-tight">{model.authors}</p>
+                <p className="text-xs text-neon-muted italic leading-tight opacity-90 line-clamp-2 px-1">{model.paper}</p>
               </div>
             </div>
           </NeonCard>
