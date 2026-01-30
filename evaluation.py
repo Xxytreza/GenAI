@@ -134,15 +134,9 @@ def evaluate_generated_samples(generated_images, classifier, device='cuda'):
     predictions = np.array(predictions)
     confidences = np.array(confidences)
     
-    # Calculate metrics
-    print("\n" + "="*60)
-    print("EVALUATION RESULTS")
-    print("="*60)
-    
     # 1. Average Confidence Score
     avg_confidence = confidences.mean()
     print(f"\n1. Average Confidence Score: {avg_confidence:.4f}")
-    print(f"   (Higher is better, >0.90 is excellent)")
     
     # 2. High Confidence Ratio
     high_conf_ratio = (confidences > 0.9).sum() / len(confidences)
@@ -162,12 +156,10 @@ def evaluate_generated_samples(generated_images, classifier, device='cuda'):
     distribution_std = counts.std()
     uniformity_score = 1 - min(1.0, distribution_std / expected_per_class)
     print(f"\n4. Distribution Uniformity: {uniformity_score:.4f}")
-    print(f"   (1.0 = perfect uniform distribution)")
     
     # 5. Overall Quality Score
     quality_score = (avg_confidence + high_conf_ratio + uniformity_score) / 3
     print(f"\n5. Overall Quality Score: {quality_score:.4f}")
-    print(f"   (Average of confidence, high-conf ratio, and uniformity)")
     
     
     return {
